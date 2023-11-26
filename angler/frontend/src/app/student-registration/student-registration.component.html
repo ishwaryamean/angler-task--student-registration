@@ -1,0 +1,107 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form class="p-4 form-container" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
+                <div class="mb-3" class="input-3d">
+                    <label for="studentName" class="form-label">Student Name</label>
+                    <input type="text"  class="form-control" id="studentName" placeholder="Enter student name"  [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]="registerDetails.student_name" #student_name="ngModel" minlength="6" maxlength="20"
+                        [ngClass]="{'is-invalid':f.submitted && student_name.invalid,'isvalid':f.submitted && student_name.valid}"
+                        name="student_name" class="form-control" required pattern="^[a-z0-9_-]{8,15}$">
+                    <div class="invalid-feedback">
+                        <div *ngIf="student_name.errors?.['minlength']">
+                            Student Name must be at least 6 characters
+                        </div>
+                        <div *ngIf="student_name.errors?.['maxlength']">
+                            Student Name must be at most 20 characters
+                        </div>
+
+                        <div *ngIf="student_name.errors?.['required']">Student Name is required</div>
+                        <div *ngIf="student_name.errors?.['pattern']">Invalid Student Name Name</div>
+                    </div>
+                </div>
+
+                <div class="mb-3" class="input-3d">
+                    <label for="studentCode" class="form-label">Student Code</label>
+                    <input type="number" class="form-control" id="studentCode" placeholder="Enter student code"  [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]="registerDetails.student_code" #student_code="ngModel" minlength="6" maxlength="20"
+                        [ngClass]="{'is-invalid':f.submitted && student_code.invalid,'isvalid':f.submitted && student_code.valid}"
+                        name="student_code" class="form-control" required pattern="^[a-z0-9_-]{8,15}$">
+                    <div class="invalid-feedback">
+                        <div *ngIf="student_code.errors?.['minlength']">
+                            Student Code must be at least 6 characters
+                        </div>
+                        <div *ngIf="student_code.errors?.['maxlength']">
+                            Student Code must be at most 20 characters
+                        </div>
+                        <div *ngIf="student_code.errors?.['required']">Student Code is required</div>
+                        <div *ngIf="student_code.errors?.['pattern']">Invalid Student Code</div>
+                    </div>
+                </div>
+
+                <div class="mb-3" class="input-3d">
+                    <label for="department" class="form-label">Department</label>
+                    <input type="text" class="form-control" id="department" placeholder="Enter department"  [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]="registerDetails.department" #department="ngModel" minlength="6" maxlength="20"
+                        [ngClass]="{'is-invalid':f.submitted && department.invalid,'isvalid':f.submitted && department.valid}"
+                        name="department" class="form-control" required pattern="^[a-z0-9_-]{8,15}$">
+
+                    <div class="invalid-feedback">
+                        <div *ngIf="department.errors?.['minlength']">
+                            Department must be at least 6 characters
+                        </div>
+                        <div *ngIf="department.errors?.['maxlength']">
+                            Department must be at most 20 characters
+                        </div>
+                        <div *ngIf="department.errors?.['required']">Department is required</div>
+                        <div *ngIf="department.errors?.['pattern']">Invalid Department</div>
+                    </div>
+                </div>
+
+                <div class="mb-3" class="input-3d">
+                    <label for="gender" class="form-label">Gender</label>
+                    <select  class="form-select" id="gender" [(ngModel)]="registerDetails.gender" #gender="ngModel"  [ngModelOptions]="{standalone: true}">
+                      <option [value]="null">Choose...</option>
+                      <option [value]="genderOptions[0].value" [selected]="registerDetails.gender === genderOptions[0].value">Male</option>
+                      <option [value]="genderOptions[1].value" [selected]="registerDetails.gender === genderOptions[1].value">Female</option>
+                      <option [value]="genderOptions[2].value" [selected]="registerDetails.gender === genderOptions[2].value">Other</option>
+                    </select>
+                  </div>
+                  
+                  
+                 <div class="mb-3" class="input-3d">
+                    <label for="email" class="form-label">Email ID</label>
+                    <input type="text" class="form-control" id="email" placeholder="Enter email"  [ngModelOptions]="{standalone: true}"
+                    [(ngModel)]="registerDetails.email_id" #email_id="ngModel" minlength="6" maxlength="20"
+                    [ngClass]="{'is-invalid':f.submitted && email_id.invalid,'isvalid':f.submitted && email_id.valid}"
+                    name="email_id" class="form-control" required pattern="^[a-z0-9_-]{8,15}$">
+
+                    <div class="invalid-feedback">
+                        <div *ngIf="email_id.errors?.['minlength']">
+                            Email ID must be at least 6 characters
+                        </div>
+                        <div *ngIf="email_id.errors?.['maxlength']">
+                            Email ID must be at most 20 characters
+                        </div>
+                        <div *ngIf="email_id.errors?.['required']">Email ID is required</div> 
+                        <!-- <div *ngIf="email_id.errors?.['pattern']">Invalid Email ID</div> -->
+                    </div> 
+                 </div> 
+                 
+                <div class="mb-3" class="input-3d">
+                    <label for="dob" class="form-label">DOB</label>
+                    <input type="date" class="form-control" id="dob"  [(ngModel)]="registerDetails.dob" #dob="ngModel" [ngModelOptions]="{standalone: true}">
+                </div>
+                <button type="submit" class="btn-3d">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<ngx-spinner
+bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" 
+type="ball-scale-multiple">
+<p style="font-size: 20px;color: white;">
+    Loading....</p>
+</ngx-spinner>
