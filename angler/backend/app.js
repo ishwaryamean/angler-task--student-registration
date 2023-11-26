@@ -6,7 +6,7 @@ var logger = require('morgan');
 var db=require('./db/db')
 var cors = require('cors')
 require('dotenv').config()
-var port=process.env.PORT 
+var port=process.env.PORT || 8080
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
